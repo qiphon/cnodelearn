@@ -1,0 +1,96 @@
+<!-- 引入头部 -->
+<% include ../header %>
+	
+<div class="main-content">
+	<div class="breadcrumbs" id="breadcrumbs">
+		<script type="text/javascript">
+			try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+		</script>
+
+		<ul class="breadcrumb">
+			<li>
+				<i class="icon-home home-icon"></i>
+				<a href="/admin">首页</a>
+			</li>
+
+			<li>
+				<a href="#">用户模块</a>
+			</li>
+			<li class="active">查看用户</li>
+		</ul><!-- .breadcrumb -->
+
+		<div class="nav-search" id="nav-search">
+			<form class="form-search">
+				<span class="input-icon">
+					<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+					<i class="icon-search nav-search-icon"></i>
+				</span>
+			</form>
+		</div><!-- #nav-search -->
+	</div>
+
+	<div class="page-content">
+		<div class="page-header">
+			<h1>
+				<small>
+					<i class="icon-double-angle-right"></i>
+					修改用户基本信息
+				</small>
+				
+			</h1>
+		</div><!-- /.page-header -->
+		<div class="row">
+			<div class="col-xs-12">
+                 <!-- 输出错误信息 -->
+                <% if(errMsg.length){ %> 
+                    <p class="alert alert-danger"><%= errMsg %></p>
+                <% } %>
+                <form id="setting_form" class="form-horizontal" action="/admin/userUpdate" method="post" enctype="multipart/form-data">
+                   <input type="hidden" name="_id" value="<%= user._id %>">
+                    <div class="control-group">
+                        <label class="col-sm-3 control-label" for="name">用户名</label>
+                        <div class="controls">
+                            <input class="input-xlarge readonly" readonly id="name" name="uname" size="30" value="<%= user.uname  %>" type="text">
+                        </div>
+                    </div>
+                    <div class="space-10"></div>
+                     <div class="control-group">
+                        <label class="col-sm-3 control-label" for="userpic">用户头像</label>
+                        <div class="controls">
+                            <input class="input-xlarge" id="userpic" name="uportrait" size="30" type="file">
+                        </div>
+                    </div>
+                    <div class="space-10"></div>
+                    <div class="control-group">
+                        <label class="col-sm-3 control-label" for="email">电子邮件</label>
+                        <div class="controls">
+                            <input class="input-xlarge" id="email" name="email" size="30" value="<%= user.email %>" type="text">
+                        </div>
+                    </div>
+                    <div class="space-10"></div>
+                    <div class="control-group">
+                        <label class="col-sm-3  control-label" for="weibo">金币</label>
+                        <div class="controls col-md-pull-3">
+                            <input class="input-xlarge" id="weibo" name="gold" value="<%= user.gold %>" type="text">
+                        </div>
+                    </div>
+                    <div class="space-10"></div>
+                    <div class="control-group">
+                        <label class="col-sm-3 control-label" for="signature">个性签名</label>
+                        <div class="controls">
+                            <textarea class="input-xlarge" id="signature" name="des" size="30" rows="10"><%= user.des %></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions col-md-offset-3 col-md-3">
+                        <input class="span-primary submit_btn" data-loading-text="保存中.." value="保存设置" type="submit">
+                         <input class="span-primary submit_btn" data-loading-text="保存中.." value="重置设置" type="reset">
+                    </div>
+                </form>
+	        </div>
+	    </div>
+	</div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+<!-- 引入底部 -->
+<% include ../footer %>

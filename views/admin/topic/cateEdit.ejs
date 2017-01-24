@@ -1,0 +1,71 @@
+<!-- 引入头部 -->
+<% include ../header %>
+    
+<div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="icon-home home-icon"></i>
+                <a href="#">首页</a>
+            </li>
+
+            <li>
+                <a class="active" href="#">话题模块</a>
+            </li>
+            
+        </ul><!-- .breadcrumb -->
+
+        <div class="nav-search" id="nav-search">
+            <form class="form-search">
+                <span class="input-icon">
+                    <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                    <i class="icon-search nav-search-icon"></i>
+                </span>
+            </form>
+        </div><!-- #nav-search -->
+    </div>
+
+    <div class="page-content">
+        <div class="page-header">
+            <h1>
+                
+                <small>
+                    <i class="icon-double-angle-right"></i>
+                   话题栏目修改
+                </small>
+            </h1>
+        </div><!-- /.page-header -->
+
+        <div class="row">
+            <div class="col-xs-12">
+                 <!-- 输出错误信息 -->
+                <% if(errMsg.length){ %> 
+                    <p class="alert alert-danger"><%= errMsg %></p>
+                <% } %>
+
+                <form id="setting_form" class="form-horizontal" action="/admin/cateUpdate" method="post">
+                    <input type="hidden" name="_id" value="<%= cateData[0]._id %>">
+                    <div class="control-group">
+                        <label class="col-sm-3 control-label" for="cateName">话题栏目</label>
+                        <div class="controls">
+                            <input class="input-xlarge" required 
+                            value="<%= cateData[0].cateName %>" id="name" name="cateName" size="30" type="text">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions col-md-offset-3 col-md-3">
+                        <input class="span-primary submit_btn" data-loading-text="保存中.." value="提交设置" type="submit">
+                         <input class="span-primary submit_btn" data-loading-text="保存中.." value="重置设置" type="reset">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+<!-- 引入底部 -->
+<% include ../footer %>
